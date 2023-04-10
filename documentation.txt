@@ -1,0 +1,21 @@
+Referance Tool : https://github.com/thewhiteh4t/FinalRecon/tree/master/
+
+
+Subdomain modules list:
+
+BuffOver
+crt.sh
+ThreatCrowd
+AnubisDB
+ThreatMiner
+Facebook Certificate Transparency API(optional)
+VirusTotal(API Key is Required)
+Shodan (API Key is Required)
+CertSpotter
+htarget
+sonarsub
+wayback
+
+
+[API keys]:
+wappalyzer:BPRtOcpd0K6dIDdJnCTeR5aRg2xtst3V4tpb3wdx

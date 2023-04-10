@@ -1,0 +1,54 @@
+<log>
+<target>
+	<uri>http://www.google.com</uri>
+	<http-status>200</http-status>
+	<request-config>
+		<header>
+			<header-name>User-Agent</header-name>
+			<header-value>WhatWeb/0.5.5</header-value>
+		</header>
+	</request-config>
+	<plugin>
+		<name>Cookies</name>
+		<string>1P_JAR</string>
+		<string>AEC</string>
+		<string>NID</string>
+	</plugin>
+	<plugin>
+		<name>Country</name>
+		<string>UNITED STATES</string>
+		<module>US</module>
+	</plugin>
+	<plugin>
+		<name>HTML5</name>
+	</plugin>
+	<plugin>
+		<name>HTTPServer</name>
+		<string>gws</string>
+	</plugin>
+	<plugin>
+		<name>HttpOnly</name>
+		<string>AEC</string>
+		<string>NID</string>
+	</plugin>
+	<plugin>
+		<name>IP</name>
+		<string>142.251.42.100</string>
+	</plugin>
+	<plugin>
+		<name>Script</name>
+	</plugin>
+	<plugin>
+		<name>Title</name>
+		<string>Google</string>
+	</plugin>
+	<plugin>
+		<name>X-Frame-Options</name>
+		<string>SAMEORIGIN</string>
+	</plugin>
+	<plugin>
+		<name>X-XSS-Protection</name>
+		<string>0</string>
+	</plugin>
+</target>
+</log>
