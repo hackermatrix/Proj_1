@@ -77,6 +77,7 @@ class UserData(viewsets.ViewSet):
         ips = sub.ip_address
         dir_count = len(sub.directories)
         endpt_count = len(sub.endpoints)
+        ports = sub.open_ports
 
 
 
@@ -89,6 +90,8 @@ class UserData(viewsets.ViewSet):
         #1.For zap
         zap_scan = Zapscan.objects.filter(subdomain_name=url,user=user)
 
+        zap_all=[{"vuln":res.vulnerability,"severity":res.severity,"vuln_url":res.vulnerable_url}for res in zap_scan]
+
         for res in zap_scan:
             if(res.severity=='High'):
                 high_count+=1
@@ -100,6 +103,9 @@ class UserData(viewsets.ViewSet):
         #2.For Nuclei
         nuclei_scan = Nucleiscan.objects.filter(subdomain_name=url,user=user)
 
+        nuclei_all=[{"vuln":res.vulnerability,"severity":res.severity,"vuln_url":res.vulnerable_url}for res in nuclei_scan]
+
+
         for res in nuclei_scan:
             if(res.severity=='high'):
                 high_count+=1
@@ -108,7 +114,7 @@ class UserData(viewsets.ViewSet):
             elif(res.severity=='info'):
                 low_count+=1
 
-        return Response({"technology": info, "ip": ips,"dir_count":dir_count,"endpt_count":endpt_count ,"low":low_count,"medium":mid_count,"high":high_count})
+        return Response({"technology": info, "ip": ips,"dir_count":dir_count,"endpt_count":endpt_count ,"ports":ports,"low":low_count,"medium":mid_count,"high":high_count,"zap_out":zap_all,"nuclei_out":nuclei_all})
 
 
         
@@ -259,6 +265,7 @@ class ReconViewSet(viewsets.ViewSet):
         user = request.user
         domain = urlparse(target).netloc
         domain_name = ('.'.join(domain.split('.')[-2:]))
+        target = domain
 
         try:
             sub = Subdomain.objects.get(subdomain_name=target, domain=domain_name, user=user)
